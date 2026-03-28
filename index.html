@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Super Look - बेस्ट हेयरकट सर्विस</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f8f9fa" width="1200" height="800"/><path fill="%23e9ecef" d="M0 400Q300 200 600 400T1200 400V800H0z"/><circle fill="%23dee2e6" cx="200" cy="300" r="80"/><circle fill="%23ced4da" cx="800" cy="250" r="60"/><circle fill="%23adb5bd" cx="1000" cy="350" r="70"/></svg>') center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b6b;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 1rem 0;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: white;
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ff6b6b;
+            width: 30px;
+        }
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+        }
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,107,107,0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">✂️ New Super Look</div>
+            <ul class="nav-links">
+                <li><a href="#home">होम</a></li>
+                <li><a href="#services">सर्विसेज</a></li>
+                <li><a href="#about">हमारे बारे में</a></li>
+                <li><a href="#contact">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <h1>✂️ परफेक्ट हेयरकट, परफेक्ट स्टाइल</h1>
+            <p>आपके बालों के लिए बेस्ट हेयरकट और स्टाइलिंग सर्विसेज। 10+ साल का एक्सपीरियंस!</p>
+            <a href="#contact" class="cta-button">अभी बुकिंग करें</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">हमारी सर्विसेज</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>रेगुलर हेयरकट</h3>
+                    <div class="price">₹100</div>
+                    <p>क्लासिक और मॉडर्न हेयरकट सभी उम्र के लिए</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪒</div>
+                    <h3>क्लीन शेव</h3>
+                    <div class="price">₹50</div>
+                    <p>परफेक्ट रेजर शेव के साथ फेस मसाज</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💈</div>
+                    <h3>हेयर कलरिंग</h3>
+                    <div class="price">₹250 से शुरू</div>
+                    <p>लेटेस्ट ट्रेंड्स के अनुसार हेयर कलर</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧴</div>
+                    <h3>हेयर ऑयल मसाज</h3>
+                    <div class="price">₹200</div>
+                    <p>हेयर फॉल रोकने के लिए स्पेशल मसाज</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>किड्स कट</h3>
+                    <div class="price">₹100</div>
+                    <p>बच्चों के लिए स्पेशल हेयरकट</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👑</div>
+                    <h3>प्रिमियम पैकेज</h3>
+                    <div class="price">₹500</div>
+                    <p>हेयरकट + शेव + मसाज + फेस पैक</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>हमारे बारे में</h2>
+                    <p><strong>15 साल से ज्यादा का एक्सपीरियंस!</strong> New Super Look आपके शहर की सबसे भरोसेमंद हेयर सैलून है।</p>
+                    <ul style="font-size: 1.2rem; margin-top: 1rem;">
+                        <li>✅ 100% साफ-सुथरी सर्विस</li>
+                        <li>✅ लेटेस्ट हेयर स्टाइल्स</li>
+                        <li>✅ किफायती दाम</li>
+                        <li>✅ 5000+ खुशहाल कस्टमर्स</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 6rem; margin-bottom: 1rem;">💇‍♂️</div>
+                    <p style="font-size: 1.5rem;">Surat, Gujarat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">📞 अभी संपर्क करें</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>हमारी जानकारी</h3>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>Shital Chhaya Apartment, Surat Gujarat, 394210</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span><strong>76984 71422</strong></span>
+                    </div>
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <span>सुबह 9:00 AM से रात 10:00 PM तक</span>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="bookAppointment(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="आपका नाम *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="मोबाइल नंबर *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" placeholder="तारीख चुनें" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="कौन सी सर्विस चाहिए? (हेयरकट/शेव/किड्स कट)" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">✅ बुकिंग कन्फर्म करें</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 New Super Look - Shital Chhaya Apartment, Surat. सभी अधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Booking form
+        function bookAppointment(event) {
+            event.preventDefault();
+            alert('🎉 बुकिंग सफल! हम 7698471422 पर कॉल करेंगे।\n\nधन्यवाद - New Super Look 💇‍♂️');
+            event.target.reset();
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.98)';
+            } else {
+                header.style.background = 'rgba(255,255,255,0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
